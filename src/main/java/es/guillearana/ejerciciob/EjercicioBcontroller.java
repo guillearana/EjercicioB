@@ -67,20 +67,24 @@ public class EjercicioBcontroller {
         String errores = "";
         String nombre = this.tfNombre.getText();
         if (nombre.isEmpty()) {
-            errores = errores + "Tienes que rellenar el campo Nombre\n";
+            errores = errores + "El campo Nombre es obligatorio\n";
         }
 
         String apellidos = this.tfApellidos.getText();
         if (apellidos.isEmpty()) {
-            errores = errores + "Tienes que rellenar el campo Apellidos\n";
+            errores = errores + "El campo Apellidos es obligatorio\n";
         }
 
         int edad = 0;
+        if (tfEdad.getText().isEmpty()) {
+            errores = errores + "El campo edad es obligatorio\n";
+        } else {
+            try {
+                edad = Integer.parseInt(this.tfEdad.getText());
 
-        try {
-            edad = Integer.parseInt(this.tfEdad.getText());
-        } catch (NumberFormatException var9) {
-            errores = errores + "La edad tiene que ser numerica\n";
+            } catch (NumberFormatException var9) {
+                errores = errores + "La edad tiene que ser numerica\n";
+            }
         }
 
         if (errores.isEmpty()) {
@@ -103,6 +107,7 @@ public class EjercicioBcontroller {
                 ventanaEmergente = new Alert(AlertType.ERROR);
                 ventanaEmergente.setTitle("ERROR");
                 ventanaEmergente.setContentText("Esa persona ya existe");
+                ventanaEmergente.setHeaderText(null);
                 ocultarBtn = new Button("Aceptar");
                 ocultarBtn.setOnAction((e) -> {
                     ventanaEmergente.hide();
@@ -114,6 +119,7 @@ public class EjercicioBcontroller {
             ventanaEmergente.setTitle("ERROR");
             ventanaEmergente.setContentText(errores);
             Button ocultarBtn = new Button("Aceptar");
+            ventanaEmergente.setHeaderText(null);
             ocultarBtn.setOnAction((e) -> {
                 ventanaEmergente.hide();
             });
