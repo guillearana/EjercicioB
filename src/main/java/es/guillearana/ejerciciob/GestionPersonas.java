@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.image.Image; // Asegúrate de importar esta clase.
 
 import java.io.IOException;
 
@@ -28,7 +29,10 @@ public class GestionPersonas extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 967, 591);
 
         // Establecer el título de la ventana.
-        stage.setTitle("Encuesta");
+        stage.setTitle("Personas");
+
+        // En tu método start o constructor, añade:
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/imagenes/agenda.png"))); // Cambia el nombre del archivo por el de tu icono.
 
         // Establecer dimensiones mínimas de la ventana.
         stage.setMinWidth(550);
