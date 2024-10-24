@@ -16,8 +16,10 @@ import javafx.scene.control.Alert.AlertType;  // Para especificar el tipo de ale
 import javafx.scene.control.cell.PropertyValueFactory;  // Para enlazar los datos con las columnas de la tabla.
 
 /**
- * Controlador para la interfaz de usuario del Ejercicio B, que permite gestionar una lista de personas.
- * Este controlador se encarga de inicializar la vista, gestionar los eventos de los botones y validar los datos de entrada.
+ * Controlador para la interfaz de usuario del Ejercicio B.
+ * Este controlador permite gestionar una lista de personas, incluyendo la
+ * inicialización de la vista, la gestión de eventos de los botones y la
+ * validación de los datos de entrada.
  */
 public class EjercicioBcontroller {
 
@@ -57,15 +59,17 @@ public class EjercicioBcontroller {
     private TextField tfNombre;
 
     /**
-     * Constructor de la clase. No realiza ninguna acción en este caso.
+     * Constructor de la clase.
+     * Este constructor no realiza ninguna acción en este caso,
+     * pero puede ser útil para inicializar variables si es necesario en el futuro.
      */
     public EjercicioBcontroller() {
     }
 
     /**
      * Método que se ejecuta automáticamente al cargar la interfaz.
-     * Este método inicializa la lista de personas y configura las columnas de la tabla para que muestren
-     * los datos correspondientes de la clase Persona.
+     * Este método inicializa la lista de personas y configura las columnas
+     * de la tabla para que muestren los datos correspondientes de la clase Persona.
      */
     @FXML
     void initialize() {
@@ -100,8 +104,8 @@ public class EjercicioBcontroller {
 
     /**
      * Método que se ejecuta cuando el usuario hace clic en el botón "Agregar".
-     * Este método valida los campos de entrada y agrega una nueva persona a la tabla si los datos son válidos.
-     * En caso de errores, se muestran alertas con los mensajes correspondientes.
+     * Este método valida los campos de entrada y agrega una nueva persona a la tabla
+     * si los datos son válidos. En caso de errores, se muestran alertas con los mensajes correspondientes.
      *
      * @param event El evento generado por el clic del botón.
      */
