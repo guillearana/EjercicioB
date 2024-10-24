@@ -6,7 +6,6 @@ import javafx.collections.ObservableList;  // Una lista que puede observar cambi
 import javafx.event.ActionEvent;  // Para manejar eventos de la interfaz, como clics de botones.
 import javafx.fxml.FXML;  // Para enlazar elementos definidos en el archivo FXML con el código Java.
 import javafx.geometry.Pos;  // Clase para definir posiciones y alineaciones de nodos.
-import javafx.scene.Node;  // Representa cualquier nodo (componente) en la escena JavaFX.
 import javafx.scene.control.Alert;  // Para mostrar cuadros de diálogo emergentes.
 import javafx.scene.control.Button;  // Un botón en JavaFX.
 import javafx.scene.control.TableCell;  // Representa una celda en una tabla.
@@ -140,7 +139,6 @@ public class EjercicioBcontroller {
         if (errores.isEmpty()) {
             Persona p = new Persona(nombre, apellidos, edad);  // Crea un nuevo objeto Persona con los datos ingresados.
             Alert ventanaEmergente;  // Declara la alerta que se mostrará al usuario.
-            Button ocultarBtn;  // Botón para ocultar la alerta.
 
             // Si la persona no está ya en la lista, se añade.
             if (!this.personas.contains(p)) {
@@ -152,24 +150,23 @@ public class EjercicioBcontroller {
                 ventanaEmergente.setContentText("Persona añadida correctamente");
                 ventanaEmergente.setHeaderText(null);  // Sin encabezado.
 
-                // Crea el botón para cerrar la alerta.
-                ocultarBtn = new Button("Aceptar");
-                ocultarBtn.setOnAction((e) -> ventanaEmergente.hide());  // Oculta la alerta cuando se hace clic.
-
-                ventanaEmergente.show();  // Muestra la alerta al usuario.
+                // Muestra la alerta al usuario.
+                ventanaEmergente.show();
 
                 // Actualiza la tabla con la nueva lista de personas.
                 this.tableInfo.setItems(this.personas);
                 this.tableInfo.refresh();  // Refresca la tabla para que muestre los datos actualizados.
+
+                // Limpia los campos de texto después de agregar la persona
+                this.tfNombre.clear();
+                this.tfApellidos.clear();
+                this.tfEdad.clear();
             } else {
                 // Si la persona ya está en la lista, muestra un mensaje de error.
                 ventanaEmergente = new Alert(AlertType.ERROR);
                 ventanaEmergente.setTitle("ERROR");
                 ventanaEmergente.setContentText("Esa persona ya existe");
                 ventanaEmergente.setHeaderText(null);  // Sin encabezado.
-
-                ocultarBtn = new Button("Aceptar");  // Botón para cerrar la alerta.
-                ocultarBtn.setOnAction((e) -> ventanaEmergente.hide());  // Oculta la alerta al hacer clic.
 
                 ventanaEmergente.show();  // Muestra la alerta de error.
             }
@@ -180,10 +177,8 @@ public class EjercicioBcontroller {
             ventanaEmergente.setContentText(String.valueOf(errores));  // Muestra los errores acumulados.
             ventanaEmergente.setHeaderText(null);  // Sin encabezado.
 
-            Button ocultarBtn = new Button("Aceptar");  // Botón para cerrar la alerta.
-            ocultarBtn.setOnAction((e) -> ventanaEmergente.hide());  // Oculta la alerta al hacer clic.
-
             ventanaEmergente.show();  // Muestra la alerta de error.
         }
     }
+
 }
